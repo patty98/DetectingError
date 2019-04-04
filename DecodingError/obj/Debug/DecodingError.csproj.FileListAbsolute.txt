@@ -1,0 +1,11 @@
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\bin\Debug\DecodingError.exe.config
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\bin\Debug\DecodingError.exe
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\bin\Debug\DecodingError.pdb
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.csprojAssemblyReference.cache
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.Form1.resources
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.Properties.Resources.resources
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.csproj.GenerateResource.cache
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.csproj.CoreCompileInputs.cache
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.exe
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.pdb
+D:\Disk D old\projects VS c++\DecodingError\DecodingError\obj\Debug\DecodingError.csproj.ResolveComReference.cache
