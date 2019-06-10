@@ -17,11 +17,12 @@ namespace DecodingError
 {
     public partial class Form1 : Form
     {
-        int r = 3;
+        int r = 3;//1:k=4, , 2:k=4, 3:k=3,4:k=3
         int d = 3;
+        int k = 4;
         double p_e = 0;
         int n = 0;
-        int g = 13;
+        int g =13;
         double xi = 0.01;
         double p = 0;
         
@@ -45,14 +46,32 @@ namespace DecodingError
 
         private void Detecting_Error()
         {
-                StreamWriter sw = new StreamWriter(@"D:\\err_decode(7,4)2.txt");
+                StreamWriter sw = new StreamWriter(@"D:\\err_decode(7,3)23.txt");
                 int m = GetMessage();
                 
                 string message = Convert.ToString(m, 2);
-                int k = message.Length;
+                if(message.Length<k)
+            {
+                int meslen = message.Length;
+                for(int count = 0;count<k-meslen;count++)
+                {
+                    message=message.Insert(0, "0");
+                }
+            }
+
                 int N_e = 0;
                 int N =Convert.ToInt16( 4 / (xi * xi * 9));
-                int a = ControlAddition(k, m);
+
+            for (int i = 0; i < r; i++)
+            {
+                message = message + "0";
+
+            }
+               m = Convert.ToInt16(message, 2);
+                int a = ControlAddition(message,m);
+                string a_bin = Convert.ToString(a, 2);
+               
+              
                 string g_bin = Convert.ToString(g, 2);
                 int len = k + r;
            
@@ -62,10 +81,9 @@ namespace DecodingError
                 for (int i = 0; i < N; i++)
                 {
                
-                 
-                    int e_vector = Error(len);
+                    int e_vector = Error(len, a_bin);
                     int b = a ^ e_vector;
-                    string a_bin = Convert.ToString(a, 2);
+                    
                     string b_bin = Convert.ToString(b, 2);
                   
                     string result_error = Division(b_bin, g_bin);
@@ -90,19 +108,13 @@ namespace DecodingError
 
 
 
-        private int ControlAddition(int k,int m)
+        private int ControlAddition(string n_bin, int m)
         {
-            n = m;
-           for(int i=0;i<r;i++)
-            {
-                n = n * 2;
-
-            }
-            string n_bin = Convert.ToString(n, 2);
+           
             string g_bin = Convert.ToString(g, 2);
             int len = k + r;
             string control_add = Division(n_bin,g_bin);
-            int a = n |Convert.ToUInt16(control_add);
+            int a = m |Convert.ToUInt16(control_add,2);
 
             return a;
         }
@@ -124,29 +136,35 @@ namespace DecodingError
         static BigInteger factorial(BigInteger x) { return x <= 1 ? 1 : x * factorial(x - 1); }
 
 
-        private int Error(int len)
+        private int Error(int len, string message)
         {
             StringBuilder e = new StringBuilder(len);  
             double x = 0;
+            StringBuilder zero = new StringBuilder();
+          
             for (int i=0;i<len;i++)
             {
                 x = rnd.NextDouble();
                 if(x<p)
                 {
-                    e.Append('1');
-
+                   int y = rnd.Next(0, zero.Length); 
+                    e.Insert(y,'1');       
+                    
                 }
-                else
-                {
-                    e.Append('0');
-                }
-                
+  
                 
             }
             string e1 =e.ToString();
-            int e_vector = Convert.ToInt16(e1, 2);
+            if (e1 == "")
+            {
+                return 0;
+            }
+            else
+            {
+                int e_vector = Convert.ToInt16(e1, 2);
 
-            return e_vector;
+                return e_vector;
+            }
         }
 
 
